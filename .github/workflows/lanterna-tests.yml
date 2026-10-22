@@ -1,0 +1,46 @@
+
+name: Testes da Lanterna
+
+on:
+  pull_request:
+    paths:
+      - 'Assets/Scripts/Ligar_Lanterna.cs'
+      - 'Assets/Tests/**'
+      - 'Packages/**'
+      - 'ProjectSettings/ProjectVersion.txt'
+  push:
+    branches:
+      - main
+    paths:
+      - 'Assets/Scripts/Ligar_Lanterna.cs'
+      - 'Assets/Tests/**'
+      - 'Packages/**'
+      - 'ProjectSettings/ProjectVersion.txt'
+
+jobs:
+  testes:
+    name: Testes EditMode
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar o projeto
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Restaurar cache da Unity
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ runner.os }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-${{ runner.os }}-
+
+      - name: Executar testes da Unity
+        uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: .
+          testMode: EditMode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
