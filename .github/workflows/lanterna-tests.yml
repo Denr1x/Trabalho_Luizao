@@ -41,6 +41,6 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: .
+          projectPath: Trabalho_do_Luizao
           testMode: EditMode
           githubToken: ${{ secrets.GITHUB_TOKEN }}
