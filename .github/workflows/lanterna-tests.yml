@@ -1,21 +1,25 @@
-
 name: Testes da Lanterna
 
 on:
   pull_request:
     paths:
-      - 'Assets/Scripts/Ligar_Lanterna.cs'
-      - 'Assets/Tests/**'
-      - 'Packages/**'
-      - 'ProjectSettings/ProjectVersion.txt'
+      - 'Trabalho_do_Luizao/Assets/Scripts/**'
+      - 'Trabalho_do_Luizao/Assets/Tests/**'
+      - 'Trabalho_do_Luizao/Packages/**'
+      - 'Trabalho_do_Luizao/ProjectSettings/**'
+      - '.github/workflows/lanterna-tests.yml'
+
   push:
     branches:
       - main
     paths:
-      - 'Assets/Scripts/Ligar_Lanterna.cs'
-      - 'Assets/Tests/**'
-      - 'Packages/**'
-      - 'ProjectSettings/ProjectVersion.txt'
+      - 'Trabalho_do_Luizao/Assets/Scripts/**'
+      - 'Trabalho_do_Luizao/Assets/Tests/**'
+      - 'Trabalho_do_Luizao/Packages/**'
+      - 'Trabalho_do_Luizao/ProjectSettings/**'
+      - '.github/workflows/lanterna-tests.yml'
+
+  workflow_dispatch:
 
 jobs:
   testes:
@@ -31,8 +35,8 @@ jobs:
       - name: Restaurar cache da Unity
         uses: actions/cache@v4
         with:
-          path: Library
-          key: Library-${{ runner.os }}-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: Trabalho_do_Luizao/Library
+          key: Library-${{ runner.os }}-${{ hashFiles('Trabalho_do_Luizao/Assets/**', 'Trabalho_do_Luizao/Packages/**', 'Trabalho_do_Luizao/ProjectSettings/**') }}
           restore-keys: |
             Library-${{ runner.os }}-
 
