@@ -26,5 +26,6 @@ public class Ligar_Lanterna : MonoBehaviour
 
         Luz_Lanterna.SetActive(false);
         Texto.SetActive(false);
+        //teste
     }
 }
