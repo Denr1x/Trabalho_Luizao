@@ -24,9 +24,7 @@ public class Ligar_Lanterna : MonoBehaviour
     {
         lanternaLigada = !lanternaLigada;
 
-        Luz_Lanterna.SetActive(lanternaLigada);
-        Texto.SetActive(lanternaLigada);
-
-        //testando se a lanterna está ligada ou desligada
+        Luz_Lanterna.SetActive(false);
+        Texto.SetActive(false);
     }
 }
